@@ -9,6 +9,6 @@ bool mgos_i2c_ext_init(void) {
   return (s_global_i2c_ext != NULL);
 }
 
-struct mgos_i2c *mgos_i2c_get_ext_global(void) {
+struct mgos_i2c *mgos_i2c_ext_get_global(void) {
   return s_global_i2c_ext;
 }
