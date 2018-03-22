@@ -3,15 +3,35 @@ type: lib
 description: Allow an extra i2c channel on supported devices
 version: 1.0
 
+platforms: [ cc3200, cc3220, esp32, esp8266 ]
+
 sources:
   - src
-filesystem:
-  - fs
-config_schema:
 libs:
   - origin: https://github.com/mongoose-os-libs/i2c
+
+build_vars:
+  MGOS_ENABLE_I2C_EXT_GPIO: 0
+
+config_schema:
+  - ["i2c_ext", "o", {title: "I2C extra settings"}]
+  - ["i2c_ext.enable", "b", false, {title: "Enable I2C"}]
+  - ["i2c_ext.freq", "i", 100000, {title: "Clock frequency"}]
+  - ["i2c_ext.debug", "b", false, {title: "Debug I2C bus activity"}]
+
+conds:
+  - when: build_vars.MGOS_ENABLE_I2C_EXT_GPIO == "1"
+    apply:
+      sources:
+        - src/common_gpio
+
+      config_schema:
+        - ["i2c_ext.sda_gpio", "i", 0, {title: "GPIO to use for SDA"}]
+        - ["i2c_ext.scl_gpio", "i", 0, {title: "GPIO to use for SCL"}]
+
 tags:
   - c
+  - i2c
   - js
 
 manifest_version: 2017-09-29

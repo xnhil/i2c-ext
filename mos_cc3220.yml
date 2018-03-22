@@ -1,0 +1,12 @@
+conds:
+  - when: build_vars.MGOS_ENABLE_I2C_EXT_GPIO != "1"
+    apply:
+      config_schema:
+        - ["i2c_ext.sda_pin", "i", 2, {title: "Pin to use for SDA"}]
+        - ["i2c_ext.scl_pin", "i", 1, {title: "Pin to use for SCL"}]
+
+  - when: build_vars.MGOS_ENABLE_I2C_EXT_GPIO == "1"
+    apply:
+      config_schema:
+        - ["i2c_ext.sda_gpio", 2]
+        - ["i2c_ext.scl_gpio", 1]

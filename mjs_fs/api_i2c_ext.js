@@ -1,9 +1,6 @@
 let I2C_EXT = {
-  _int: ffi('bool mgos_i2c_ext_init(void)'),
-
-  // ## **`I2CEXTRA.get()`**
-  // Get secondary I2C bus handle. Return value: opaque pointer.
-  get: function() {
-    return this._int();
-  },
+  // ## **`I2C_EXT.get()`**
+  // Get I2C extended bus handle (for use by I2C API). Return value: opaque pointer.
+  get: ffi('void *mgos_i2c_ext_get_global(void)'),
+  get_default: ffi('void *mgos_i2c_ext_get_global(void)'),  // deprecated
 };
