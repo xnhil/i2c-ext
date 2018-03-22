@@ -7,6 +7,8 @@ platforms: [ cc3200, cc3220, esp32, esp8266 ]
 
 sources:
   - src
+includes:
+  - include
 libs:
   - origin: https://github.com/mongoose-os-libs/i2c
 
