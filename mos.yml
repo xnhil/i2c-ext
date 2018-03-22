@@ -1,0 +1,17 @@
+author: xnhil
+type: lib
+description: Allow an extra i2c channel on supported devices
+version: 1.0
+
+sources:
+  - src
+filesystem:
+  - fs
+config_schema:
+libs:
+  - origin: https://github.com/mongoose-os-libs/i2c
+tags:
+  - c
+  - js
+
+manifest_version: 2017-09-29
